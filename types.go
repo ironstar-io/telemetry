@@ -79,3 +79,19 @@ type CommandCheckin struct {
 	// Command is the name of the command that was run
 	Command string `firestore:"command" json:"command"`
 }
+
+// SurveyResponse provides feedback using `tok survey`
+type SurveyResponse struct {
+	// Timestamp is the submission date and time in UTC
+	Timestamp time.Time `firestore:"timestamp,serverTimestamp" json:"timestamp"`
+	// TelemetryID is the UUID of the Tokaido installation sending this document
+	TelemetryID string `firestore:"telemetry_id" json:"telemetry_id"`
+	// TokaidoVersion ...
+	TokaidoVersion string `firestore:"tokaido_version" json:"tokaido_version"`
+	// Satisfaction on a scale of 1-5, 5 being most satisfied
+	Satisfaction string `firestore:"satisfaction" json:"satisfaction"`
+	// NextFeature is the name of planned features the user most wants to see
+	NextFeature string `firestore:"nextfeature" json:"nextfeature"`
+	// Message is a freeform feedback message from the user
+	Message string `firestore:"message" json:"message"`
+}
